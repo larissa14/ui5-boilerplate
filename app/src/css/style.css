@@ -1,0 +1,11 @@
+.sap-desktop{
+    height: 100%;
+}
+
+#content{
+    height: 100%;
+}
+
+#content div.sapUiView:first-child {
+    height: 100%
+}

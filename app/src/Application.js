@@ -6,7 +6,7 @@ sap.ui.localResources( 'util' );
 
 jQuery.sap.registerModulePath( 'view', 'src/view' );
 jQuery.sap.registerModulePath( 'util', 'src/util' );
-
+jQuery.sap.registerModulePath( 'model', 'src/model');
 
 
 /**
@@ -20,12 +20,28 @@ jQuery.sap.registerModulePath( 'util', 'src/util' );
  */
 jQuery.sap.declare( 'Application' );
 jQuery.sap.require( 'sap.ui.app.Application' );
+jQuery.sap.require( 'model.sflight');
 
 sap.ui.app.Application.extend( 'Application', {
     init: function(){
 
+        var oODataSflightModel = model.sflight.getModel();
+        sap.ui.getCore().setModel( oODataSflightModel, 'sflight' );
+
+
+
+// Load language properties
+        var i18n = new sap.ui.model.resource.ResourceModel( {
+            bundleUrl: './src/i18n/i18n.properties',
+            locale: 'de'
+        } );
+        sap.ui.getCore().setModel( i18n, 'i18n' );
 
     },
+
+
+
+
     /**
      * Defines your home/main view for your spa(single-page-application)
      */

@@ -4,9 +4,9 @@
  * This is the home view
  *
  */
-sap.ui.jsview( 'view.home', {
+sap.ui.jsview('view.home', {
 
-    getControllerName: function(){
+    getControllerName: function () {
         return 'view.home';
     },
 
@@ -14,12 +14,16 @@ sap.ui.jsview( 'view.home', {
      * Defines the content of the view
      * @param oController
      */
-    createContent: function( oController ){
-        // Create simple text view
-        var oTextView = new sap.ui.commons.TextView();
+    createContent: function (/*oController*/) {
 
-        oTextView.setText( 'Hello world' );
+        var oNavCon = new sap.m.NavContainer( 'navContainerControl', {
+            pages: [
+                sap.ui.jsview( 'carrier.list' , 'view.carrier.list' ) ,
+                sap.ui.jsview( 'carrier.details' , 'view.carrier.details')],
+            initialPage: 'carrier.list'
+        });
 
-        return oTextView;
-    }
-} );
+        return oNavCon;
+
+
+    } } );
